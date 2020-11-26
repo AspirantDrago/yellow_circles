@@ -31,7 +31,11 @@ class Example(QMainWindow):
             qp.end()
 
     def draw_circle(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        qp.setBrush(QColor(
+            random.randint(0, 255),
+            random.randint(0, 255),
+            random.randint(0, 255)
+        ))
         radius = random.randint(10, min(self.WIDTH, self.HEIGHT) // 2)
         x = random.randint(radius, self.WIDTH - radius)
         y = random.randint(radius, self.HEIGHT - radius)
