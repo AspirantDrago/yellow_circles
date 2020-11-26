@@ -10,8 +10,9 @@ from PyQt5 import uic
 class Example(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.WIDTH = 300
-        self.HEIGHT = 300
+        self.WIDTH = 800
+        self.HEIGHT = 600
+        self.painted = False
         self.initUI()
 
     def initUI(self):
@@ -19,13 +20,15 @@ class Example(QMainWindow):
         self.btn.clicked.connect(self.btn_click)
 
     def btn_click(self):
+        self.painted = True
         self.repaint()
 
     def paintEvent(self, event):
-        qp = QPainter()
-        qp.begin(self)
-        self.draw_circle(qp)
-        qp.end()
+        if self.painted:
+            qp = QPainter()
+            qp.begin(self)
+            self.draw_circle(qp)
+            qp.end()
 
     def draw_circle(self, qp):
         qp.setBrush(QColor(255, 255, 0))
