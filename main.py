@@ -6,17 +6,16 @@ from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 from PyQt5 import uic
 
+from ui import Ui_MainWindow
 
-class Example(QMainWindow):
+
+class Example(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.WIDTH = 800
         self.HEIGHT = 600
         self.painted = False
-        self.initUI()
-
-    def initUI(self):
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.btn.clicked.connect(self.btn_click)
 
     def btn_click(self):
